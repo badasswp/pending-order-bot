@@ -72,6 +72,10 @@ class Scheduler extends Service implements Kernel {
 	 * @return void
 	 */
 	public function send_reminders(): void {
+		if ( ! class_exists( 'WooCommerce' ) ) {
+			return;
+		}
+
 		$from    = pbot_get_settings( 'twilio_phone' );
 		$message = pbot_get_settings( 'twilio_message' );
 		$client  = $this->get_twilio_client();
@@ -89,6 +93,10 @@ class Scheduler extends Service implements Kernel {
 	 * @return mixed[]
 	 */
 	protected function get_pending_orders(): array {
+		if ( ! class_exists( 'WooCommerce' ) ) {
+			return [];
+		}
+
 		return wc_get_orders(
 			[
 				'limit'  => -1,
