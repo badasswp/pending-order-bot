@@ -11,8 +11,6 @@
 namespace PendingOrderBot\Core;
 
 use PendingOrderBot\Services\Admin;
-use PendingOrderBot\Services\Boot;
-use PendingOrderBot\Services\Routes;
 use PendingOrderBot\Interfaces\Kernel;
 
 class Container implements Kernel {
