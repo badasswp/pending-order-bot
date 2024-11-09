@@ -1,10 +1,5 @@
 <?xml version="1.0"?>
 <ruleset name="PendingOrderBot">
-	<arg value="s" />
-	<arg name="extensions" value="php" />
-	<arg name="colors" />
-	<file>.</file>
-
 	<rule ref="WordPress-Core">
 		<exclude name="WordPress.Files.FileName" />
 		<exclude name="Generic.Arrays.DisallowShortArraySyntax" />
@@ -12,6 +7,12 @@
 		<exclude name="Universal.Arrays.DisallowShortArraySyntax.Found" />
 	</rule>
 
+	<arg value="s" />
+	<arg name="extensions" value="php" />
+	<arg name="colors" />
+	<file>.</file>
+
 	<exclude-pattern>/vendor/</exclude-pattern>
 	<exclude-pattern>/languages/</exclude-pattern>
+	<exclude-pattern>/node_modules/</exclude-pattern>
 </ruleset>
