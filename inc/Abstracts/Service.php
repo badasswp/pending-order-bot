@@ -10,7 +10,6 @@
 
 namespace PendingOrderBot\Abstracts;
 
-use PendingOrderBot\Core\Converter;
 use PendingOrderBot\Interfaces\Kernel;
 
 abstract class Service implements Kernel {
