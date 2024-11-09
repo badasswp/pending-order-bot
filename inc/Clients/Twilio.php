@@ -46,7 +46,7 @@ class Twilio implements Client {
 	 *
 	 * @return void
 	 */
-	public function send( $from, $to, $message ) {
+	public function send( $from, $to, $message ): void {
 		return $this->client->messages->create(
 			$to,
 			[
