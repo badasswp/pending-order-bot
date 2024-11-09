@@ -130,7 +130,7 @@ class Options {
 					'send_text'  => [
 						'control' => esc_attr( 'checkbox' ),
 						'label'   => esc_html__( 'Send Text', 'pending-order-bot' ),
-						'summary' => esc_html__( 'Use Twilio API service to send phone text messages.', 'pending-order-bot' ),
+						'summary' => esc_html__( 'Use Twilio to send phone text messages.', 'pending-order-bot' ),
 					],
 					'send_email' => [
 						'control' => esc_attr( 'checkbox' ),
@@ -142,17 +142,29 @@ class Options {
 			'twilio_options'  => [
 				'heading'  => esc_html__( 'Twilio Options', 'pending-order-bot' ),
 				'controls' => [
+					'twilio_sid' => [
+						'control'     => esc_attr( 'text' ),
+						'placeholder' => esc_attr( '' ),
+						'label'       => esc_html__( 'Account SID', 'pending-order-bot' ),
+						'summary'     => esc_html__( 'Twilio SID Number', 'pending-order-bot' ),
+					],
+					'twilio_token' => [
+						'control'     => esc_attr( 'password' ),
+						'placeholder' => esc_attr( '' ),
+						'label'       => esc_html__( 'API Token', 'pending-order-bot' ),
+						'summary'     => esc_html__( 'Twilio API Token string', 'pending-order-bot' ),
+					],
 					'twilio_phone' => [
 						'control'     => esc_attr( 'text' ),
 						'placeholder' => esc_attr( '' ),
 						'label'       => esc_html__( 'Phone Number', 'pending-order-bot' ),
 						'summary'     => esc_html__( 'e.g. +1234567890', 'pending-order-bot' ),
 					],
-					'twilio_token' => [
-						'control'     => esc_attr( 'password' ),
+					'twilio_message' => [
+						'control'     => esc_attr( 'text' ),
 						'placeholder' => esc_attr( '' ),
-						'label'       => esc_html__( 'Twilio API Token', 'pending-order-bot' ),
-						'summary'     => esc_html__( 'e.g. ae2kgch7i', 'pending-order-bot' ),
+						'label'       => esc_html__( 'Message', 'pending-order-bot' ),
+						'summary'     => esc_html__( 'e.g. You have abandoned orders.', 'pending-order-bot' ),
 					],
 				],
 			],
