@@ -130,12 +130,12 @@ class Options {
 					'send_text' => [
 						'control' => esc_attr( 'checkbox' ),
 						'label'   => esc_html__( 'Send Text', 'pending-order-bot' ),
-						'summary' => esc_html__( 'Use Twilio API service to send a phone text message.', 'pending-order-bot' ),
+						'summary' => esc_html__( 'Use Twilio API service to send phone text messages.', 'pending-order-bot' ),
 					],
 					'send_email' => [
 						'control' => esc_attr( 'checkbox' ),
 						'label'   => esc_html__( 'Send E-mail', 'pending-order-bot' ),
-						'summary' => esc_html__( 'Use WP default e-mail address to send an e-mail message.', 'pending-order-bot' ),
+						'summary' => esc_html__( 'Use WP default e-mail address to send emails.', 'pending-order-bot' ),
 					],
 				],
 			],
