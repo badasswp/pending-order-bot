@@ -7,7 +7,6 @@ use WP_Mock\Tools\TestCase;
 use PendingOrderBot\Abstracts\Service;
 
 /**
- * @covers \PendingOrderBot\Abstracts\Service::__construct
  * @covers \PendingOrderBot\Abstracts\Service::get_instance
  */
 class ServiceTest extends TestCase {
