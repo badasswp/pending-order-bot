@@ -108,7 +108,7 @@ class Scheduler extends Service implements Kernel {
 		foreach ( $this->get_pending_orders() as $order ) {
 			try {
 				$twilio->send( $from, $order->get_billing_phone(), $message );
-			} catch( \Exception $e ) {
+			} catch ( \Exception $e ) {
 				error_log(
 					'Unable to send text message: %s',
 					$e->getMessage()
