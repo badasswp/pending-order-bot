@@ -142,19 +142,19 @@ class Options {
 			'twilio_options'  => [
 				'heading'  => esc_html__( 'Twilio Options', 'pending-order-bot' ),
 				'controls' => [
-					'twilio_sid' => [
+					'twilio_sid'     => [
 						'control'     => esc_attr( 'text' ),
 						'placeholder' => esc_attr( '' ),
 						'label'       => esc_html__( 'Account SID', 'pending-order-bot' ),
 						'summary'     => esc_html__( 'Twilio SID Number', 'pending-order-bot' ),
 					],
-					'twilio_token' => [
+					'twilio_token'   => [
 						'control'     => esc_attr( 'password' ),
 						'placeholder' => esc_attr( '' ),
 						'label'       => esc_html__( 'API Token', 'pending-order-bot' ),
 						'summary'     => esc_html__( 'Twilio API Token string', 'pending-order-bot' ),
 					],
-					'twilio_phone' => [
+					'twilio_phone'   => [
 						'control'     => esc_attr( 'text' ),
 						'placeholder' => esc_attr( '' ),
 						'label'       => esc_html__( 'Phone Number', 'pending-order-bot' ),
