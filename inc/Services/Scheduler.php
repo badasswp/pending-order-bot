@@ -56,8 +56,21 @@ class Scheduler extends Service implements Kernel {
 	 * @return mixed[]
 	 */
 	public function register_cron_schedules( $schedules ): array {
+		/**
+		 * Filter Interval.
+		 *
+		 * Specify the interval between sending reminders
+		 * to WooCommerce users.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param integer $interval Time Interval
+		 * @return integer
+		 */
+		$interval = apply_filters( 'pbot_reminder_interval', DAY_IN_SECONDS );
+
 		$schedules['Pending Orders'] = [
-			'interval' => DAY_IN_SECONDS,
+			'interval' => $interval,
 			'display'  => esc_html__( 'Pending Orders' ),
 		];
 
@@ -78,10 +91,22 @@ class Scheduler extends Service implements Kernel {
 
 		$from    = pbot_get_settings( 'twilio_phone' );
 		$message = pbot_get_settings( 'twilio_message' );
-		$client  = $this->get_twilio_client();
+
+		/**
+		 * Filter Text Client.
+		 *
+		 * Specify the text client to use to send pending
+		 * order messages to users.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param Twilio $twilio Twilio instance.
+		 * @return integer
+		 */
+		$twilio = apply_filters( 'pbot_text_client', $this->get_twilio_client() );
 
 		foreach ( $this->get_pending_orders() as $order ) {
-			$client->send( $from, $order->get_billing_phone(), $message );
+			$twilio->send( $from, $order->get_billing_phone(), $message );
 		}
 	}
 
