@@ -124,10 +124,10 @@ class Options {
 	 */
 	public static function get_form_fields() {
 		return [
-			'general_options'       => [
+			'general_options' => [
 				'heading'  => esc_html__( 'General Options', 'pending-order-bot' ),
 				'controls' => [
-					'send_text' => [
+					'send_text'  => [
 						'control' => esc_attr( 'checkbox' ),
 						'label'   => esc_html__( 'Send Text', 'pending-order-bot' ),
 						'summary' => esc_html__( 'Use Twilio API service to send phone text messages.', 'pending-order-bot' ),
@@ -139,16 +139,16 @@ class Options {
 					],
 				],
 			],
-			'twilio_options'       => [
+			'twilio_options'  => [
 				'heading'  => esc_html__( 'Twilio Options', 'pending-order-bot' ),
 				'controls' => [
-					'twilio_phone'  => [
+					'twilio_phone' => [
 						'control'     => esc_attr( 'text' ),
 						'placeholder' => esc_attr( '' ),
 						'label'       => esc_html__( 'Phone Number', 'pending-order-bot' ),
 						'summary'     => esc_html__( 'e.g. +1234567890', 'pending-order-bot' ),
 					],
-					'twilio_token'  => [
+					'twilio_token' => [
 						'control'     => esc_attr( 'password' ),
 						'placeholder' => esc_attr( '' ),
 						'label'       => esc_html__( 'Twilio API Token', 'pending-order-bot' ),
