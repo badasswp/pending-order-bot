@@ -12,6 +12,7 @@ namespace PendingOrderBot\Core;
 
 use PendingOrderBot\Services\Boot;
 use PendingOrderBot\Services\Admin;
+use PendingOrderBot\Services\Scheduler;
 use PendingOrderBot\Interfaces\Kernel;
 
 class Container implements Kernel {
@@ -33,6 +34,7 @@ class Container implements Kernel {
 		static::$services = [
 			Admin::class,
 			Boot::class,
+			Scheduler::class,
 		];
 	}
 
