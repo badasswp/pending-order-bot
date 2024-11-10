@@ -12,6 +12,7 @@ namespace PendingOrderBot\Services;
 
 use PendingOrderBot\Clients\Twilio;
 use PendingOrderBot\Abstracts\Service;
+use PendingOrderBot\Interfaces\Client;
 use PendingOrderBot\Interfaces\Kernel;
 
 class Scheduler extends Service implements Kernel {
@@ -142,9 +143,9 @@ class Scheduler extends Service implements Kernel {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return Twilio
+	 * @return Client
 	 */
-	protected function get_twilio_client(): Twilio {
+	protected function get_twilio_client(): Client {
 		$sid   = pbot_get_settings( 'twilio_sid' );
 		$token = pbot_get_settings( 'twilio_token' );
 
