@@ -1,0 +1,121 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Pending Order Bot\n"
+"POT-Creation-Date: 2024-11-10 18:30+0100\n"
+"PO-Revision-Date: 2024-11-10 18:35+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: pending-order-bot.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.min.js\n"
+"X-Poedit-SearchPathExcluded-1: vendor\n"
+
+#. Plugin Name of the plugin/theme
+#: inc/Admin/Options.php:79
+msgid "Pending Order Bot"
+msgstr "Бот для отложенных ордеров"
+
+#. Description of the plugin/theme
+#: inc/Admin/Options.php:83
+msgid "Send reminders on WooCommerce pending orders."
+msgstr "Отправляйте напоминания на WooCommerce ожидающие заказы."
+
+#: inc/Admin/Options.php:103
+msgid "Actions"
+msgstr "Действия"
+
+#: inc/Admin/Options.php:106
+msgid "Save Changes"
+msgstr "Сохранить изменения"
+
+#: inc/Admin/Options.php:128
+msgid "General Options"
+msgstr "Общие настройки"
+
+#: inc/Admin/Options.php:132
+msgid "Send Text"
+msgstr "Отправить"
+
+#: inc/Admin/Options.php:133
+msgid "Use Twilio to send phone text messages."
+msgstr "Используйте Twilio для отправки текстовых сообщений на телефон."
+
+#: inc/Admin/Options.php:137
+msgid "Send E-mail"
+msgstr "Отправить E-mail"
+
+#: inc/Admin/Options.php:138
+msgid "Use WP default e-mail address to send emails."
+msgstr "Используйте адрес электронной почты WP по умолчанию для отправки электронных писем."
+
+#: inc/Admin/Options.php:143
+msgid "Twilio Options"
+msgstr "Опции Twilio"
+
+#: inc/Admin/Options.php:148
+msgid "Account SID"
+msgstr "SID аккаунта"
+
+#: inc/Admin/Options.php:149
+msgid "Twilio SID Number"
+msgstr "Номер Twilio SID"
+
+#: inc/Admin/Options.php:154
+msgid "API Token"
+msgstr "API токена"
+
+#: inc/Admin/Options.php:155
+msgid "Twilio API Token string"
+msgstr "Строка токена API Twilio"
+
+#: inc/Admin/Options.php:160
+msgid "Phone Number"
+msgstr "Номер телефона"
+
+#: inc/Admin/Options.php:161
+msgid "e.g. +1234567890"
+msgstr "например, +1234567890"
+
+#: inc/Admin/Options.php:166
+msgid "Message"
+msgstr "Сообщение"
+
+#: inc/Admin/Options.php:167
+msgid "e.g. You have abandoned orders."
+msgstr "hапример, вы отказались от заказов."
+
+#: inc/Admin/Options.php:186
+msgid "Settings Saved."
+msgstr "Настройки сохранены."
+
+#: inc/Services/Scheduler.php:74
+msgid "Pending Orders"
+msgstr "Заказы в ожидании"
+
+#. translators: Plugin directory path.
+#: pending-order-bot.php:32
+#, php-format
+msgid "Fatal Error: Composer not setup in %s"
+msgstr "Неустранимая ошибка: Composer не настроен в %s"
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/badasswp/pending-order-bot"
+msgstr "https://github.com/badasswp/pending-order-bot"
+
+#. Author of the plugin/theme
+msgid "badasswp"
+msgstr "badasswp"
+
+#. Author URI of the plugin/theme
+msgid "https://github.com/badasswp"
+msgstr "https://github.com/badasswp"
