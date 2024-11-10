@@ -10,6 +10,7 @@
 
 namespace PendingOrderBot\Core;
 
+use PendingOrderBot\Services\Boot;
 use PendingOrderBot\Services\Admin;
 use PendingOrderBot\Interfaces\Kernel;
 
@@ -31,6 +32,7 @@ class Container implements Kernel {
 	public function __construct() {
 		static::$services = [
 			Admin::class,
+			Boot::class,
 		];
 	}
 
