@@ -96,8 +96,8 @@ class Scheduler extends Service implements Kernel {
 		/**
 		 * Filter Text Client.
 		 *
-		 * Specify the text client to use to send pending
-		 * order messages to users.
+		 * Specify the text client to use to send messages to users
+		 * with pending orders.
 		 *
 		 * @since 1.0.0
 		 *
