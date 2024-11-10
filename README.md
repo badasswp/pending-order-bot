@@ -1,6 +1,8 @@
 # pending-order-bot
 Send reminders on WooCommerce pending orders.
 
+<img width="1342" alt="pending" src="https://github.com/user-attachments/assets/b1f2ca4f-1307-417e-a188-09037f2e76e3">
+
 ## Download
 
 Download from [WordPress plugin repository](https://wordpress.org/plugins/pending-order-bot/).
