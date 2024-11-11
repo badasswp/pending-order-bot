@@ -55,4 +55,15 @@ class Twilio implements Client {
 			]
 		);
 	}
+
+	/**
+	 * Get Client.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return Twilio
+	 */
+	public function get_client(): TwilioClient {
+		return $this->client;
+	}
 }
