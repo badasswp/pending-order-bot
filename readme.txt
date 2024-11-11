@@ -18,7 +18,11 @@ Send reminders on WooCommerce pending orders.
 
 == Description ==
 
--
+The average cart abandonment rate is <strong>69.99%</strong>, according to Baymard Institute. This is an average of 48 shopping cart abandonment studies, which range from 56% to 81%.
+
+The middle point of just under a <strong>70%</strong> cart abandonment rate means that only <strong>three out of ten customers</strong> who fill their shopping carts <strong>actually make it to checkout</strong> to complete their purchase.
+
+This plugin helps remind customers of their abandoned cart orders, so they complete their purchases. It's that simple!
 
 == Changelog ==
 
