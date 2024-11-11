@@ -10,6 +10,7 @@ use Twilio\Rest\Api\V2010\Account\MessageList as TwilioMessages;
 
 /**
  * @covers \PendingOrderBot\Clients\Twilio::__construct
+ * @covers \PendingOrderBot\Clients\Twilio::get_client
  * @covers \PendingOrderBot\Clients\Twilio::send
  */
 class TwilioTest extends TestCase {

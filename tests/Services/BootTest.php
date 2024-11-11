@@ -8,7 +8,6 @@ use PendingOrderBot\Services\Boot;
 use PendingOrderBot\Abstracts\Service;
 
 /**
- * @covers \PendingOrderBot\Services\Boot::__construct
  * @covers \PendingOrderBot\Services\Boot::register
  * @covers \PendingOrderBot\Services\Boot::register_translation
  */
