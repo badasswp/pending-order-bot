@@ -354,11 +354,18 @@ class AdminTest extends TestCase {
 		$this->assertConditionsMet();
 	}
 
-	/*public function test_register_options_styles_bails() {
+	public function test_register_options_styles_passes() {
+		$screen = Mockery::mock( \WP_Screen::class )->makePartial();
+		$screen->shouldAllowMockingProtectedMethods();
+		$screen->id = 'toplevel_page_pending-order-bot';
+
+		\WP_Mock::userFunction( 'get_current_screen' )
+			->andReturn( $screen );
+
 		\WP_Mock::userFunction(
 			'esc_html__',
 			[
-				'times'  => 25,
+				'times'  => 19,
 				'return' => function ( $text, $domain = 'pending-order-bot' ) {
 					return $text;
 				},
@@ -368,7 +375,7 @@ class AdminTest extends TestCase {
 		\WP_Mock::userFunction(
 			'esc_attr',
 			[
-				'times'  => 9,
+				'times'  => 10,
 				'return' => function ( $text ) {
 					return $text;
 				},
@@ -378,7 +385,7 @@ class AdminTest extends TestCase {
 		\WP_Mock::userFunction(
 			'esc_attr__',
 			[
-				'times'  => 6,
+				'times'  => 0,
 				'return' => function ( $text ) {
 					return $text;
 				},
@@ -402,5 +409,5 @@ class AdminTest extends TestCase {
 		$this->admin->register_options_styles();
 
 		$this->assertConditionsMet();
-	}*/
+	}
 }
