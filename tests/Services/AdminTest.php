@@ -297,9 +297,8 @@ class AdminTest extends TestCase {
 		);
 
 		$updated_options = [
-			'size'   => 60,
-			'label'  => 'WATERMARK',
-			'upload' => true,
+			'send_text'  => true,
+			'send_email' => false,
 		];
 
 		$_POST = array_merge(
@@ -344,8 +343,8 @@ class AdminTest extends TestCase {
 					'twilio_token'   => '',
 					'twilio_phone'   => '',
 					'twilio_message' => '',
-					'send_text'      => '',
-					'send_email'     => '',
+					'send_text'      => true,
+					'send_email'     => false,
 				]
 			)
 			->andReturn( true );
@@ -354,4 +353,54 @@ class AdminTest extends TestCase {
 
 		$this->assertConditionsMet();
 	}
+
+	/*public function test_register_options_styles_bails() {
+		\WP_Mock::userFunction(
+			'esc_html__',
+			[
+				'times'  => 25,
+				'return' => function ( $text, $domain = 'pending-order-bot' ) {
+					return $text;
+				},
+			]
+		);
+
+		\WP_Mock::userFunction(
+			'esc_attr',
+			[
+				'times'  => 9,
+				'return' => function ( $text ) {
+					return $text;
+				},
+			]
+		);
+
+		\WP_Mock::userFunction(
+			'esc_attr__',
+			[
+				'times'  => 6,
+				'return' => function ( $text ) {
+					return $text;
+				},
+			]
+		);
+
+		\WP_Mock::userFunction( 'plugins_url' )
+			->with( 'pending-order-bot/styles.css' )
+			->andReturn( 'https://example.com/wp-content/plugins/pending-order-bot/styles.css' );
+
+		\WP_Mock::userFunction( 'wp_enqueue_style' )
+			->with(
+				'pending-order-bot',
+				'https://example.com/wp-content/plugins/pending-order-bot/styles.css',
+				[],
+				true,
+				'all'
+			)
+			->andReturn( null );
+
+		$this->admin->register_options_styles();
+
+		$this->assertConditionsMet();
+	}*/
 }
