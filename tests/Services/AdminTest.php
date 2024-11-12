@@ -14,7 +14,6 @@ use PendingOrderBot\Abstracts\Service;
  * @covers \PendingOrderBot\Services\Admin::register_options_menu
  * @covers \PendingOrderBot\Services\Admin::register_options_init
  * @covers \PendingOrderBot\Services\Admin::register_options_styles
- * @covers \PendingOrderBot\Engine\Watermarker::__construct
  * @covers \PendingOrderBot\Admin\Options::__callStatic
  * @covers \PendingOrderBot\Admin\Options::get_form_fields
  * @covers \PendingOrderBot\Admin\Options::get_form_notice
