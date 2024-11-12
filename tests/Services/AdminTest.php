@@ -410,4 +410,13 @@ class AdminTest extends TestCase {
 
 		$this->assertConditionsMet();
 	}
+
+	public function test_register_options_styles_bails() {
+		\WP_Mock::userFunction( 'get_current_screen' )
+			->andReturn( '' );
+
+		$this->admin->register_options_styles();
+
+		$this->assertConditionsMet();
+	}
 }
