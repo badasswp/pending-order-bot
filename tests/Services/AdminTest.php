@@ -10,7 +10,6 @@ use PendingOrderBot\Services\Admin;
 use PendingOrderBot\Abstracts\Service;
 
 /**
- * @covers \PendingOrderBot\Services\Admin::__construct
  * @covers \PendingOrderBot\Services\Admin::register
  * @covers \PendingOrderBot\Services\Admin::register_options_menu
  * @covers \PendingOrderBot\Services\Admin::register_options_init

@@ -9,6 +9,7 @@ use PendingOrderBot\Abstracts\Service;
 
 /**
  * @covers \PendingOrderBot\Services\Scheduler::register
+ * @covers \PendingOrderBot\Services\Scheduler::schedule_reminders
  */
 class SchedulerTest extends TestCase {
 	public Scheduler $scheduler;
