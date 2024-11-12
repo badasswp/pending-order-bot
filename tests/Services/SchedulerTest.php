@@ -42,4 +42,18 @@ class SchedulerTest extends TestCase {
 
 		$this->assertConditionsMet();
 	}
+
+	public function test_schedule_reminders_schedules_event() {
+		\WP_Mock::userFunction( 'wp_next_scheduled' )
+			->with( 'pending_orders' )
+			->andReturn( false );
+
+		\WP_Mock::userFunction( 'wp_schedule_event' )
+			->with( time(), 'Pending Orders', 'pending_orders' )
+			->andReturn( null );
+
+		$this->scheduler->schedule_reminders();
+
+		$this->assertConditionsMet();
+	}
 }
