@@ -10,6 +10,7 @@ use PendingOrderBot\Abstracts\Service;
 /**
  * @covers \PendingOrderBot\Services\Scheduler::register
  * @covers \PendingOrderBot\Services\Scheduler::schedule_reminders
+ * @covers \PendingOrderBot\Services\Scheduler::register_cron_schedules
  */
 class SchedulerTest extends TestCase {
 	public Scheduler $scheduler;
