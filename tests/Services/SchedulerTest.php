@@ -57,4 +57,43 @@ class SchedulerTest extends TestCase {
 
 		$this->assertConditionsMet();
 	}
+
+	public function test_register_cron_schedules() {
+		define( 'DAY_IN_SECONDS', 24 * 60 * 60 );
+		define( 'HOUR_IN_SECONDS', 1 * 60 * 60 );
+		define( 'THREE_DAYS_TIME', 3 * 24 * 60 * 60 );
+
+		\WP_Mock::userFunction( 'esc_html__' )
+			->once()
+			->with( 'Pending Orders', 'pending-order-bot' )
+			->andReturn( 'Pending Orders' );
+
+		\WP_Mock::onFilter( 'pbot_reminder_interval' )
+			->with( DAY_IN_SECONDS )
+			->reply( THREE_DAYS_TIME );
+
+		$schedules = $this->scheduler->register_cron_schedules(
+			[
+				'Default' => [
+					'interval' => HOUR_IN_SECONDS,
+					'display'  => 'Default'
+				]
+			]
+		);
+
+		$this->assertSame(
+			$schedules,
+			[
+				'Default' => [
+					'interval' => HOUR_IN_SECONDS,
+					'display'  => 'Default'
+				],
+				'Pending Orders' => [
+					'interval' => THREE_DAYS_TIME,
+					'display'  => 'Pending Orders'
+				]
+			]
+		);
+		$this->assertConditionsMet();
+	}
 }
