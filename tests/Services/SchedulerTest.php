@@ -97,4 +97,14 @@ class SchedulerTest extends TestCase {
 		);
 		$this->assertConditionsMet();
 	}
+
+	public function test_get_pending_orders_returns_empty_array() {
+		$scheduler = Mockery::mock( Scheduler::class )->makePartial();
+		$scheduler->shouldAllowMockingProtectedMethods();
+
+		$orders = $scheduler->get_pending_orders();
+
+		$this->assertSame( $orders, [] );
+		$this->assertConditionsMet();
+	}
 }
