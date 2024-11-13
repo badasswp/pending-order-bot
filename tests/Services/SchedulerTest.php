@@ -76,22 +76,22 @@ class SchedulerTest extends TestCase {
 			[
 				'Default' => [
 					'interval' => HOUR_IN_SECONDS,
-					'display'  => 'Default'
-				]
+					'display'  => 'Default',
+				],
 			]
 		);
 
 		$this->assertSame(
 			$schedules,
 			[
-				'Default' => [
+				'Default'        => [
 					'interval' => HOUR_IN_SECONDS,
-					'display'  => 'Default'
+					'display'  => 'Default',
 				],
 				'Pending Orders' => [
 					'interval' => THREE_DAYS_TIME,
-					'display'  => 'Pending Orders'
-				]
+					'display'  => 'Pending Orders',
+				],
 			]
 		);
 		$this->assertConditionsMet();
