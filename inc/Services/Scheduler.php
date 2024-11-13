@@ -72,7 +72,7 @@ class Scheduler extends Service implements Kernel {
 
 		$schedules['Pending Orders'] = [
 			'interval' => $interval,
-			'display'  => esc_html__( 'Pending Orders' ),
+			'display'  => esc_html__( 'Pending Orders', 'pending-order-bot' ),
 		];
 
 		return $schedules;
