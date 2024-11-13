@@ -21,7 +21,7 @@ This plugin helps remind customers of their abandoned cart orders, so they compl
 
 #### `pbot_reminder_interval`
 
-This custom hook provides a to specify the interval between sending reminders to WooCommerce users.
+This custom hook provides a way to specify the interval between sending reminders to WooCommerce users.
 
 ```php
 add_filter( 'pbot_reminder_interval', [ $this, 'custom_time_interval' ], 10, 1 );
