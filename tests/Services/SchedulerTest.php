@@ -11,6 +11,7 @@ use PendingOrderBot\Abstracts\Service;
  * @covers \PendingOrderBot\Services\Scheduler::register
  * @covers \PendingOrderBot\Services\Scheduler::schedule_reminders
  * @covers \PendingOrderBot\Services\Scheduler::register_cron_schedules
+ * @covers \PendingOrderBot\Services\Scheduler::get_pending_orders
  */
 class SchedulerTest extends TestCase {
 	public Scheduler $scheduler;
