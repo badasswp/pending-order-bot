@@ -7,3 +7,4 @@ phpstan.neon
 phpunit.xml
 README.md
 tests
+assets
