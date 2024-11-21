@@ -5,4 +5,4 @@
 * Support for Arabic, Danish, Chinese, Hebrew, Hindi, Russian, German, Italian, Croatian, Spanish & French languages.
 * Plugin Options page.
 * Unit Tests.
-* Tested up to WP 6.6.2.
+* Tested up to WP 6.7.0.
