@@ -71,7 +71,7 @@ class AdminTest extends TestCase {
 			'esc_attr__',
 			[
 				'times'  => 0,
-				'return' => function ( $text ) {
+				'return' => function ( $text, $domain = 'pending-order-bot' ) {
 					return $text;
 				},
 			]
@@ -154,7 +154,7 @@ class AdminTest extends TestCase {
 			'esc_attr__',
 			[
 				'times'  => 0,
-				'return' => function ( $text ) {
+				'return' => function ( $text, $domain = 'pending-order-bot' ) {
 					return $text;
 				},
 			]
@@ -207,7 +207,7 @@ class AdminTest extends TestCase {
 			'esc_attr__',
 			[
 				'times'  => 0,
-				'return' => function ( $text ) {
+				'return' => function ( $text, $domain = 'pending-order-bot' ) {
 					return $text;
 				},
 			]
@@ -288,7 +288,7 @@ class AdminTest extends TestCase {
 			'esc_attr__',
 			[
 				'times'  => 0,
-				'return' => function ( $text ) {
+				'return' => function ( $text, $domain = 'pending-order-bot' ) {
 					return $text;
 				},
 			]
@@ -374,7 +374,7 @@ class AdminTest extends TestCase {
 			'esc_attr',
 			[
 				'times'  => 10,
-				'return' => function ( $text ) {
+				'return' => function ( $text, $domain = 'pending-order-bot' ) {
 					return $text;
 				},
 			]
