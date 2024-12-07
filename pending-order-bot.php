@@ -3,7 +3,7 @@
  * Plugin Name: Pending Order Bot
  * Plugin URI:  https://github.com/badasswp/pending-order-bot
  * Description: Send reminders on WooCommerce pending orders.
- * Version:     1.0.0
+ * Version:     1.0.1
  * Author:      badasswp
  * Author URI:  https://github.com/badasswp
  * License:     GPL v2 or later
