@@ -20,10 +20,10 @@ if ( ! defined( 'WPINC' ) ) {
 	exit;
 }
 
-define( 'POBOT_AUTOLOAD', __DIR__ . '/vendor/autoload.php' );
+define( 'PBOT_AUTOLOAD', __DIR__ . '/vendor/autoload.php' );
 
 // Composer Check.
-if ( ! file_exists( POBOT_AUTOLOAD ) ) {
+if ( ! file_exists( PBOT_AUTOLOAD ) ) {
 	add_action(
 		'admin_notices',
 		function () {
@@ -39,5 +39,5 @@ if ( ! file_exists( POBOT_AUTOLOAD ) ) {
 }
 
 // Run Plugin.
-require_once POBOT_AUTOLOAD;
+require_once PBOT_AUTOLOAD;
 ( \PendingOrderBot\Plugin::get_instance() )->run();
