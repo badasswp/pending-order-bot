@@ -138,7 +138,7 @@ class Admin extends Service implements Kernel {
 
 		wp_enqueue_style(
 			Options::get_page_slug(),
-			plugins_url( 'pending-order-bot/styles.css' ),
+			plugin_dir_url( __FILE__ ) . '../../styles.css',
 			[],
 			'1.0.0',
 			'all'
