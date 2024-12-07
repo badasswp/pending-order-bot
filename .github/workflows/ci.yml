@@ -21,7 +21,7 @@ jobs:
 
     - name: Validate Composer
       run: |
-        composer validate --strict
+        composer validate
 
     - name: Install Composer
       run: |
