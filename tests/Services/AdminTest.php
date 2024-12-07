@@ -390,14 +390,16 @@ class AdminTest extends TestCase {
 			]
 		);
 
-		\WP_Mock::userFunction( 'plugins_url' )
-			->with( 'pending-order-bot/styles.css' )
-			->andReturn( 'https://example.com/wp-content/plugins/pending-order-bot/styles.css' );
+		$admin = new \ReflectionClass( Admin::class );
+
+		\WP_Mock::userFunction( 'plugin_dir_url' )
+			->with( $admin->getFileName() )
+			->andReturn( 'https://example.com/wp-content/plugins/pending-order-bot/inc/services/' );
 
 		\WP_Mock::userFunction( 'wp_enqueue_style' )
 			->with(
 				'pending-order-bot',
-				'https://example.com/wp-content/plugins/pending-order-bot/styles.css',
+				'https://example.com/wp-content/plugins/pending-order-bot/inc/services/../../styles.css',
 				[],
 				true,
 				'all'
