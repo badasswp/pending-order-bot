@@ -8,3 +8,7 @@ phpunit.xml
 README.md
 tests
 assets
+vendor/twilio/sdk/.github
+vendor/twilio/sdk/Dockerfile
+vendor/twilio/sdk/Dockerfile-dev
+vendor/twilio/sdk/sonar-project.properties
