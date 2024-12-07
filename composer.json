@@ -16,7 +16,7 @@
     }
   ],
   "require": {
-    "twilio/sdk": "^6.28"
+    "twilio/sdk": "8.3.9"
   },
   "require-dev": {
     "phpunit/phpunit": "^9.6",
