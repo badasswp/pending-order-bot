@@ -12,3 +12,5 @@ vendor/twilio/sdk/.github
 vendor/twilio/sdk/Dockerfile
 vendor/twilio/sdk/Dockerfile-dev
 vendor/twilio/sdk/sonar-project.properties
+vendor/twilio/sdk/CODE_OF_CONDUCT.md
+vendor/twilio/sdk/PULL_REQUEST_TEMPLATE.md
