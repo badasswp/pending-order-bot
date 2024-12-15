@@ -101,7 +101,7 @@ class Scheduler extends Service implements Kernel {
 		 *
 		 * @since 1.0.0
 		 *
-		 * @param Twilio $twilio Twilio instance.
+		 * @param Client $client Client interface.
 		 * @return integer
 		 */
 		$twilio = apply_filters( 'pbot_text_client', $this->get_twilio_client() );
