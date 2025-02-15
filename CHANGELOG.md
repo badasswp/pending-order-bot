@@ -1,5 +1,8 @@
 # Changelog
 
+## Unreleased
+* Pass Twilio client via Dependency Injection.
+
 ## 1.0.1
 * Restrict non-permited plugin files.
 * Update Twilio SDK package to 8.3.9.
