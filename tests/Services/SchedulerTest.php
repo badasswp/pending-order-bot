@@ -151,6 +151,7 @@ class SchedulerTest extends TestCase {
 			->andReturn( $orders );
 
 		$scheduler->shouldReceive( 'get_text_client' )
+			->with( Mockery::type( Twilio::class ) )
 			->andReturn( $twilio );
 
 		$twilio->shouldReceive( 'send' )
