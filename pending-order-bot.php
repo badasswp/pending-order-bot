@@ -38,6 +38,9 @@ if ( ! file_exists( PBOT_AUTOLOAD ) ) {
 	return;
 }
 
-// Run Plugin.
+// Autoload classes.
 require_once PBOT_AUTOLOAD;
+
+// Run plugin.
+require_once __DIR__ . '/inc/Helpers/functions.php';
 ( \PendingOrderBot\Plugin::get_instance() )->run();
