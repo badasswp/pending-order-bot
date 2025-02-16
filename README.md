@@ -67,3 +67,25 @@ public function custom_text_client( $client ): Client {
 
 - client _`{Client}`_ By default this will be an instance of the Twilio client.
 <br/>
+
+#### `pbot_send_error`
+
+This custom hook provides a way for users to handle caught exceptions from failed send actions.
+
+```php
+add_action( 'pbot_send_error', [ $this, 'custom_send_error' ], 10, 1 );
+
+public function custom_send_error( $message ): void {
+    $post = wp_insert_post(
+        [
+            'post_type'  => 'pbot_send_error',
+            'post_title' => sanitize_text_field( $message ),
+        ]
+    );
+}
+```
+
+**Parameters**
+
+- message _`{string}`_ By default, this will be the error message from the caught exception.
+<br/>
