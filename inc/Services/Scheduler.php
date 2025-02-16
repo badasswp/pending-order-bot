@@ -86,34 +86,34 @@ class Scheduler extends Service implements Kernel {
 	 * @return void
 	 */
 	public function send_reminders(): void {
-		if ( ! class_exists( 'WooCommerce' ) ) {
+		if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 			return;
 		}
 
 		$from    = pbot_get_settings( 'twilio_phone' );
 		$message = pbot_get_settings( 'twilio_message' );
 
-		/**
-		 * Filter Text Client.
-		 *
-		 * Specify the text client to use to send messages to users
-		 * with pending orders.
-		 *
-		 * @since 1.0.0
-		 *
-		 * @param Client $client Client interface.
-		 * @return integer
-		 */
-		$twilio = apply_filters( 'pbot_text_client', $this->get_twilio_client() );
-
 		foreach ( $this->get_pending_orders() as $order ) {
 			try {
-				$twilio->send( $from, $order->get_billing_phone(), $message );
+				$this->get_text_client( new Twilio() )->send( $from, $order->get_billing_phone(), $message );
 			} catch ( \Exception $e ) {
-				error_log(
-					'Unable to send text message: %s',
+				$error_msg = sprintf(
+					'Error: Unable to send text message, %s',
 					$e->getMessage()
 				);
+
+				/**
+				 * Fires after failed Send.
+				 *
+				 * Provide error message to user so they can use
+				 * as they please.
+				 *
+				 * @since 1.0.2
+				 *
+				 * @param string $error_msg Error message.
+				 * @return void
+				 */
+				do_action( 'pbot_send_error', $error_msg );
 			}
 		}
 	}
@@ -126,7 +126,7 @@ class Scheduler extends Service implements Kernel {
 	 * @return mixed[]
 	 */
 	protected function get_pending_orders(): array {
-		if ( ! class_exists( 'WooCommerce' ) ) {
+		if ( ! is_plugin_active( 'woocommerce/woocommerce.php' ) ) {
 			return [];
 		}
 
@@ -139,16 +139,24 @@ class Scheduler extends Service implements Kernel {
 	}
 
 	/**
-	 * Get Twilio Client.
+	 * Get Text Client.
 	 *
-	 * @since 1.0.0
+	 * @since 1.0.2
 	 *
 	 * @return Client
 	 */
-	protected function get_twilio_client(): Client {
-		$sid   = pbot_get_settings( 'twilio_sid' );
-		$token = pbot_get_settings( 'twilio_token' );
-
-		return new Twilio( $sid, $token );
+	protected function get_text_client( Client $client ): Client {
+		/**
+		 * Filter Text Client.
+		 *
+		 * Specify the text client to use to send messages to users
+		 * with pending orders.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @param Client $client Client instance.
+		 * @return Client
+		 */
+		return apply_filters( 'pbot_text_client', $client );
 	}
 }

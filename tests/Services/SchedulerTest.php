@@ -4,14 +4,18 @@ namespace PendingOrderBot\Tests\Services;
 
 use Mockery;
 use WP_Mock\Tools\TestCase;
-use PendingOrderBot\Services\Scheduler;
+use PendingOrderBot\Clients\Twilio;
 use PendingOrderBot\Abstracts\Service;
+use PendingOrderBot\Services\Scheduler;
 
 /**
  * @covers \PendingOrderBot\Services\Scheduler::register
  * @covers \PendingOrderBot\Services\Scheduler::schedule_reminders
  * @covers \PendingOrderBot\Services\Scheduler::register_cron_schedules
  * @covers \PendingOrderBot\Services\Scheduler::get_pending_orders
+ * @covers \PendingOrderBot\Services\Scheduler::get_text_client
+ * @covers \PendingOrderBot\Services\Scheduler::send_reminders
+ * @covers pbot_get_settings
  */
 class SchedulerTest extends TestCase {
 	public Scheduler $scheduler;
@@ -99,13 +103,185 @@ class SchedulerTest extends TestCase {
 		$this->assertConditionsMet();
 	}
 
+	public function test_schedule_reminder_bails_if_woocommerce_is_not_active() {
+		$scheduler = Mockery::mock( Scheduler::class )->makePartial();
+		$scheduler->shouldAllowMockingProtectedMethods();
+
+		\WP_Mock::userFunction( 'is_plugin_active' )
+			->once()
+			->with( 'woocommerce/woocommerce.php' )
+			->andReturn( false );
+
+		$scheduler->send_reminders();
+
+		$this->assertConditionsMet();
+	}
+
+	public function test_schedule_reminder_catches_exception_and_applies_action() {
+		$scheduler = Mockery::mock( Scheduler::class )->makePartial();
+		$scheduler->shouldAllowMockingProtectedMethods();
+
+		$twilio = Mockery::mock( Twilio::class )->makePartial();
+		$twilio->shouldAllowMockingProtectedMethods();
+
+		$order = Mockery::mock( \WC_Order::class )->makePartial();
+		$order->shouldAllowMockingProtectedMethods();
+
+		\WP_Mock::userFunction( 'is_plugin_active' )
+			->once()
+			->with( 'woocommerce/woocommerce.php' )
+			->andReturn( true );
+
+		\WP_Mock::userFunction( 'get_option' )
+			->times( 2 )
+			->with( 'pending_order_bot', [] )
+			->andReturn(
+				[
+					'twilio_phone'   => '+1234567890',
+					'twilio_message' => 'You have abandoned cart orders.',
+				]
+			);
+
+		$order->shouldReceive( 'get_billing_phone' )
+			->andReturn( '+0987654321' );
+
+		$orders[] = $order;
+
+		$scheduler->shouldReceive( 'get_pending_orders' )
+			->andReturn( $orders );
+
+		$scheduler->shouldReceive( 'get_text_client' )
+			->with( Mockery::type( Twilio::class ) )
+			->andReturn( $twilio );
+
+		$twilio->shouldReceive( 'send' )
+			->with(
+				'+1234567890',
+				'+0987654321',
+				'You have abandoned cart orders.'
+			)
+			->andThrow(
+				new \Exception( 'SMS Text API is currently down...' )
+			);
+
+		\WP_Mock::expectAction(
+			'pbot_send_error',
+			'Error: Unable to send text message, SMS Text API is currently down...'
+		);
+
+		$scheduler->send_reminders();
+
+		$this->assertConditionsMet();
+	}
+
+	public function test_schedule_reminder_passes_correctly() {
+		$scheduler = Mockery::mock( Scheduler::class )->makePartial();
+		$scheduler->shouldAllowMockingProtectedMethods();
+
+		$twilio = Mockery::mock( Twilio::class )->makePartial();
+		$twilio->shouldAllowMockingProtectedMethods();
+
+		$order = Mockery::mock( \WC_Order::class )->makePartial();
+		$order->shouldAllowMockingProtectedMethods();
+
+		\WP_Mock::userFunction( 'is_plugin_active' )
+			->once()
+			->with( 'woocommerce/woocommerce.php' )
+			->andReturn( true );
+
+		\WP_Mock::userFunction( 'get_option' )
+			->times( 2 )
+			->with( 'pending_order_bot', [] )
+			->andReturn(
+				[
+					'twilio_phone'   => '+1234567890',
+					'twilio_message' => 'You have abandoned cart orders.',
+				]
+			);
+
+		$order->shouldReceive( 'get_billing_phone' )
+			->andReturn( '+0987654321' );
+
+		$orders[] = $order;
+
+		$scheduler->shouldReceive( 'get_pending_orders' )
+			->andReturn( $orders );
+
+		$scheduler->shouldReceive( 'get_text_client' )
+			->andReturn( $twilio );
+
+		$twilio->shouldReceive( 'send' )
+			->with(
+				'+1234567890',
+				'+0987654321',
+				'You have abandoned cart orders.'
+			)
+			->andReturn( null );
+
+		$scheduler->send_reminders();
+
+		$this->assertConditionsMet();
+	}
+
 	public function test_get_pending_orders_returns_empty_array() {
 		$scheduler = Mockery::mock( Scheduler::class )->makePartial();
 		$scheduler->shouldAllowMockingProtectedMethods();
 
+		\WP_Mock::userFunction( 'is_plugin_active' )
+			->once()
+			->with( 'woocommerce/woocommerce.php' )
+			->andReturn( false );
+
 		$orders = $scheduler->get_pending_orders();
 
 		$this->assertSame( $orders, [] );
+		$this->assertConditionsMet();
+	}
+
+	public function test_get_pending_orders_returns_pending_orders() {
+		$scheduler = Mockery::mock( Scheduler::class )->makePartial();
+		$scheduler->shouldAllowMockingProtectedMethods();
+
+		\WP_Mock::userFunction( 'is_plugin_active' )
+			->once()
+			->with( 'woocommerce/woocommerce.php' )
+			->andReturn( true );
+
+		$order = Mockery::mock( \WC_Order::class )->makePartial();
+
+		$order->ID          = 1;
+		$order->post_type   = 'product';
+		$order->post_status = 'pending';
+
+		$orders[] = $order;
+
+		\WP_Mock::userFunction( 'wc_get_orders' )
+			->with(
+				[
+					'limit'  => -1,
+					'status' => 'pending',
+				]
+			)
+			->andReturn( $orders );
+
+		$response = $scheduler->get_pending_orders();
+
+		$this->assertSame( count( $response ), 1 );
+		$this->assertConditionsMet();
+	}
+
+	public function test_get_text_client_returns_twilio_client() {
+		$scheduler = Mockery::mock( Scheduler::class )->makePartial();
+		$scheduler->shouldAllowMockingProtectedMethods();
+
+		$twilio = Mockery::mock( Twilio::class )->makePartial();
+		$twilio->shouldAllowMockingProtectedMethods();
+
+		\WP_Mock::expectFilter( 'pbot_text_client', $twilio );
+
+		$twilio_client = $scheduler->get_text_client( $twilio );
+
+		$this->assertInstanceOf( Twilio::class, $twilio_client );
 		$this->assertConditionsMet();
 	}
 }

@@ -2,19 +2,23 @@
 Contributors: badasswp
 Tags: woocommerce, pending, order, reminder, bot.
 Requires at least: 4.0
-Tested up to: 6.7.1
-Stable tag: 1.0.1
+Tested up to: 6.7.2
+Stable tag: 1.0.2
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Send reminders on WooCommerce pending orders.
+Send automated reminders to customers about their pending WooCommerce orders, reduce abandoned carts and improve sales on your e-commerce website.
 
 == Installation ==
 
 1. Go to 'Plugins > Add New' on your WordPress admin dashboard.
 2. Search for 'Pending Order Bot' plugin from the official WordPress plugin repository.
 3. Click 'Install Now' and then 'Activate'.
+4. Head off to Twilio.com to sign up to get an account.
+5. Locate the Console page in the Twilio website and get your Account SID and Token.
+6. Fill your plugin options page with your Twilio details and enable the <strong>Send Text</strong> and <strong>Send E-mail</strong> options.
+7. You're all set!
 
 == Description ==
 
@@ -42,6 +46,11 @@ The Pending Order Bot plugin is built to work right out of the box. Simply insta
 Want to add your personal touch? All of our documentation can be found [here](https://github.com/badasswp/pending-order-bot). You can override the plugin's behaviour with custom logic of your own using [hooks](https://github.com/badasswp/pending-order-bot?tab=readme-ov-file#hooks).
 
 == Changelog ==
+
+= 1.0.2 =
+* Pass Twilio client via Dependency Injection.
+* Improve Unit tests & Test coverage.
+* Tested up to WP 6.7.2.
 
 = 1.0.1 =
 * Restrict non-permited plugin files.

@@ -1,6 +1,8 @@
 # pending-order-bot
 Send reminders on WooCommerce pending orders.
 
+[![Coverage Status](https://coveralls.io/repos/github/badasswp/pending-order-bot/badge.svg?branch=chore-improve-unit-tests-and-test-coverage)](https://coveralls.io/github/badasswp/pending-order-bot?branch=chore-improve-unit-tests-and-test-coverage)
+
 <img width="1342" alt="pending" src="https://github.com/user-attachments/assets/b1f2ca4f-1307-417e-a188-09037f2e76e3">
 
 ---
@@ -64,4 +66,26 @@ public function custom_text_client( $client ): Client {
 **Parameters**
 
 - client _`{Client}`_ By default this will be an instance of the Twilio client.
+<br/>
+
+#### `pbot_send_error`
+
+This custom hook provides a way for users to handle caught exceptions from failed send actions.
+
+```php
+add_action( 'pbot_send_error', [ $this, 'custom_send_error' ], 10, 1 );
+
+public function custom_send_error( $message ): void {
+    $post = wp_insert_post(
+        [
+            'post_type'  => 'pbot_send_error',
+            'post_title' => sanitize_text_field( $message ),
+        ]
+    );
+}
+```
+
+**Parameters**
+
+- message _`{string}`_ By default, this will be the error message from the caught exception.
 <br/>
