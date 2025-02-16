@@ -112,7 +112,7 @@ class Form {
 		 * Pass in custom fields to the Admin Form with
 		 * key, value options.
 		 *
-		 * @since 1.1.0
+		 * @since 1.0.0
 		 *
 		 * @param mixed[] $fields Form Fields.
 		 * @return mixed[]
