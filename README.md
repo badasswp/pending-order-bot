@@ -1,6 +1,8 @@
 # pending-order-bot
 Send reminders on WooCommerce pending orders.
 
+[![Coverage Status](https://coveralls.io/repos/github/badasswp/pending-order-bot/badge.svg?branch=chore-improve-unit-tests-and-test-coverage)](https://coveralls.io/github/badasswp/pending-order-bot?branch=chore-improve-unit-tests-and-test-coverage)
+
 <img width="1342" alt="pending" src="https://github.com/user-attachments/assets/b1f2ca4f-1307-417e-a188-09037f2e76e3">
 
 ---
