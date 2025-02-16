@@ -45,6 +45,7 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 
 = Unreleased =
 * Pass Twilio client via Dependency Injection.
+* Improve Unit tests & Test coverage.
 
 = 1.0.1 =
 * Restrict non-permited plugin files.
