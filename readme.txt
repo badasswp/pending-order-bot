@@ -47,9 +47,10 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 
 == Changelog ==
 
-= Unreleased =
+= 1.0.2 =
 * Pass Twilio client via Dependency Injection.
 * Improve Unit tests & Test coverage.
+* Tested up to WP 6.7.2.
 
 = 1.0.1 =
 * Restrict non-permited plugin files.
