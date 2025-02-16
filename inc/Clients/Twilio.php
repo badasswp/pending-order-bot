@@ -2,8 +2,8 @@
 /**
  * Twilio class.
  *
- * This class acts as a wrapper around the Twilio REST
- * implementation for ease of use.
+ * This concrete class acts as a wrapper around the
+ * TwilioClient implementation.
  *
  * @package PendingOrderBot
  */
@@ -14,27 +14,6 @@ use PendingOrderBot\Interfaces\Client;
 use Twilio\Rest\Client as TwilioClient;
 
 class Twilio implements Client {
-	/**
-	 * Client Instance.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @var TwilioClient
-	 */
-	private TwilioClient $client;
-
-	/**
-	 * Set up.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @param string $sid   Twilio Account SID.
-	 * @param string $token Twilio Token.
-	 */
-	public function __construct( $sid, $token ) {
-		$this->client = new TwilioClient( $sid, $token );
-	}
-
 	/**
 	 * Send Text Message.
 	 *
@@ -47,7 +26,7 @@ class Twilio implements Client {
 	 * @return void
 	 */
 	public function send( $from, $to, $message ): void {
-		$this->client->messages->create(
+		$this->get_twilio_client()->messages->create(
 			$to,
 			[
 				'from' => $from,
@@ -57,13 +36,16 @@ class Twilio implements Client {
 	}
 
 	/**
-	 * Get Client.
+	 * Set up.
 	 *
-	 * @since 1.0.0
+	 * @since 1.0.2
 	 *
-	 * @return Twilio
+	 * @return TwilioClient
 	 */
-	public function get_client(): TwilioClient {
-		return $this->client;
+	protected function get_twilio_client(): TwilioClient {
+		$sid   = pbot_get_settings( 'twilio_sid' );
+		$token = pbot_get_settings( 'twilio_token' );
+
+		return new TwilioClient( $sid, $token );
 	}
 }
