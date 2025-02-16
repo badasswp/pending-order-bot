@@ -18,7 +18,7 @@ class Form {
 	 *
 	 * @var mixed[]
 	 */
-	private array $options;
+	protected array $options;
 
 	/**
 	 * Set up Constructor.
@@ -112,7 +112,7 @@ class Form {
 		 * Pass in custom fields to the Admin Form with
 		 * key, value options.
 		 *
-		 * @since 1.0.0
+		 * @since 1.1.0
 		 *
 		 * @param mixed[] $fields Form Fields.
 		 * @return mixed[]
