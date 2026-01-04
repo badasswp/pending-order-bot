@@ -1,7 +1,7 @@
 {
   "name": "badasswp/pending-order-bot",
   "description": "Send reminders on WooCommerce pending orders.",
-  "type": "package",
+  "type": "wordpress-plugin",
   "license": "GPL-2.0-or-later",
   "autoload": {
     "psr-4": {
