@@ -47,6 +47,10 @@ Want to add your personal touch? All of our documentation can be found [here](ht
 
 == Changelog ==
 
+= 1.0.3 =
+* Specify `wordpress-plugin` as Composer package type.
+* Tested up to WP 6.9.
+
 = 1.0.2 =
 * Pass Twilio client via Dependency Injection.
 * Improve Unit tests & Test coverage.
