@@ -3,7 +3,7 @@
     ".",
     "./vendor/woocommerce"
   ],
-  "phpVersion": "8.2",
+  "phpVersion": "8.4",
   "port": 6800,
   "testsPort": 6801,
   "config": {
