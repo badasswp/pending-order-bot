@@ -89,3 +89,31 @@ public function custom_send_error( $message ): void {
 
 - message _`{string}`_ By default, this will be the error message from the caught exception.
 <br/>
+
+## Contribute
+
+Contributions are __welcome__ and will be fully __credited__. To contribute, please fork this repo and raise a PR (Pull Request) against the `master` branch.
+
+### Pre-requisites
+
+You should have the following tools before proceeding to the next steps:
+
+- Composer
+- Yarn
+- Docker
+
+To enable you start development, please run:
+
+```bash
+yarn start
+```
+
+This should spin up a local WP env instance for you to work with at:
+
+```bash
+http://pending-order-bot.localhost:6800
+```
+
+You should now have a functioning local WP env to work with. To login to the `wp-admin` backend, please use `admin` for username & `password` for password.
+
+__Awesome!__ - Thanks for being interested in contributing your time and code to this project!
